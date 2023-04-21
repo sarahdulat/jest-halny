@@ -1,14 +1,24 @@
 import Description from "@/components/Description";
+import Navbar from "@/components/Navbar";
+import Switches from "@/components/Switches";
 import Test from "@/components/Test";
 import { Weather } from "@/types/weather";
 import { NextPageContext } from "next";
 
 export default function TestPage({ data }: Props) {
   return (
-    <div>
-      <Test peak={data.peak} greeting="Hello World" />
-      <Description />
-    </div>
+    <>
+      <Navbar />
+      <div className="grid grid-cols-2 h-screen">
+        <div className="col-start p-4">
+          <Test peak={data.peak} />
+          <Switches />
+        </div>
+        <div className="col-end p-4">
+          <Description />
+        </div>
+      </div>
+    </>
   );
 }
 

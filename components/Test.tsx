@@ -2,11 +2,10 @@ import { Weather } from "@/types/weather";
 import { Button } from "./Button";
 
 export type Props = {
-  greeting: string;
   peak: Weather;
 };
 
-export default function Test({ greeting, peak }: Props) {
+export default function Test({ peak }: Props) {
   // methods
   const handleClick = () => alert("Heya");
   const submit = () => console.log("todo");
