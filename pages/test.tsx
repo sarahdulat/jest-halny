@@ -6,15 +6,15 @@ import { Weather } from "@/types/weather";
 import { NextPageContext } from "next";
 
 export default function TestPage({ data }: Props) {
+  console.log(data);
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-2 h-screen">
-        <div className="col-start p-4">
-          <Test peak={data.peak} />
-          <Switches />
+      <div className="grid grid-cols-2">
+        <div className="p-4">
+          <Switches data={data} />
         </div>
-        <div className="col-end p-4">
+        <div className="p-4">
           <Description />
         </div>
       </div>
@@ -44,7 +44,7 @@ async function fetchWeather({
   lon: number;
 }): Promise<Weather> {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9c52bb70a33b299b2425efd1c553b28c`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9c52bb70a33b299b2425efd1c553b28c&units=metric`
   );
   return res.json();
 }
