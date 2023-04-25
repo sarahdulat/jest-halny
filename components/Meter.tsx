@@ -6,6 +6,7 @@ export default function Meter() {
       <div
         className={classes.gauge}
         style={{
+          // @ts-expect-error
           "--rotation": "83deg",
           "--color": "#5cb85c",
           "--background": "#e9ecef",
