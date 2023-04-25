@@ -1,6 +1,5 @@
 import { Weather } from "@/types/weather";
 import clsx from "clsx";
-import classes from "./Switches.module.css";
 
 const switches = [
   "Wind Direction",
@@ -19,10 +18,10 @@ export default function Switches({ data }: Props) {
     <div className="flex flex-wrap justify-between">
       <Switch
         label="Wind Direction"
-        active={data.peak.wind.deg >= 90 && data.peak.wind.deg <= 270}
+        active={data.peak.wind_deg >= 90 && data.peak.wind_deg <= 270}
       />
-      <Switch label="Wind Speed" active={data.peak.wind.speed >= 10} />
-      <Switch label="Wind Gust Speed" />
+      <Switch label="Wind Speed" active={data.peak.wind_speed >= 10} />
+      <Switch label="Wind Gust Speed" active={data.peak.wind_gust >= 32} />
       <Switch label="Air Temperature" />
       <Switch label="Decrease in Humidity" />
     </div>

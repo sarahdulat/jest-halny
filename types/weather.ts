@@ -1,37 +1,30 @@
 export type Weather = {
-  base: string;
-  clouds: { all: number };
-  cod: number;
-  coord: { lon: number; lat: number };
+  current: string;
+  clouds: number;
+  dew_point: number;
   dt: number;
-  id: number;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    grnd_level: number;
-    humidity: number;
-    sea_level: number;
-  };
-  name: string;
-  sys: {
-    type: number;
-    id: number;
-    country: string;
-    sunrise: number;
-    sunset: number;
-  };
-  timezone: number;
+  feels_like: number;
+  humidity: number;
+  pressure: number;
+  snow: { "1h": number };
+  sunrise: number;
+  sunset: number;
+  temp: number;
+  uvi: number;
   visibility: number;
   weather: Array<{
-    id: number;
-    main: string;
     description: string;
     icon: string;
+    id: number;
+    main: string;
   }>;
-  wind: { speed: number; deg: number; gust: number };
+  wind_deg: number;
+  wind_gust: number;
+  wind_speed: number;
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
 };
 
 type ApiResponse<T> = {

@@ -1,7 +1,7 @@
 import Description from "@/components/Description";
+import Meter from "@/components/Meter";
 import Navbar from "@/components/Navbar";
 import Switches from "@/components/Switches";
-import Test from "@/components/Test";
 import { Weather } from "@/types/weather";
 import { NextPageContext } from "next";
 
@@ -12,6 +12,7 @@ export default function TestPage({ data }: Props) {
       <Navbar />
       <div className="grid grid-cols-2">
         <div className="p-4">
+          <Meter />
           <Switches data={data} />
         </div>
         <div className="p-4">
@@ -44,7 +45,8 @@ async function fetchWeather({
   lon: number;
 }): Promise<Weather> {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9c52bb70a33b299b2425efd1c553b28c&units=metric`
+    `
+https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&appid=9c52bb70a33b299b2425efd1c553b28c&units=metric`
   );
   return res.json();
 }
