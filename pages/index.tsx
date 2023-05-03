@@ -5,15 +5,24 @@ import Switches from "@/src/components/Switches";
 import { HistoricalWeather, Weather } from "@/src/types/weather";
 import { NextPageContext } from "next";
 import { getUnixTime, sub } from "date-fns";
-import { getHalnyConditions, HalnyConditions } from "@/src/store/store";
-export default function TestPage({ data, halnyConditions }: Props) {
+import {
+  getHalnyConditions,
+  getHalnyProbability,
+  HalnyConditions,
+  HalnyProbability,
+} from "@/src/store/store";
+export default function TestPage({
+  data,
+  halnyConditions,
+  halnyProbability,
+}: Props) {
   console.log(data);
   return (
     <>
       <Navbar />
       <div className="grid grid-cols-2">
         <div className="p-4">
-          <Meter />
+          <Meter halnyProbability={halnyProbability} />
           <Switches halnyConditions={halnyConditions} />
         </div>
         <div className="p-4">
@@ -24,9 +33,10 @@ export default function TestPage({ data, halnyConditions }: Props) {
   );
 }
 
-// data
+// types
 type Props = {
   halnyConditions: HalnyConditions;
+  halnyProbability: HalnyProbability;
   data: {
     valley: Weather;
     peak: Weather;
@@ -36,6 +46,7 @@ type Props = {
   };
 };
 
+// fetching data
 export async function getServerSideProps(context: NextPageContext) {
   const [valley, peak, valleyHistorical, ...rest] = await Promise.all([
     fetchWeather({ lat: 49.2992, lon: 19.9496 }),
@@ -47,15 +58,19 @@ export async function getServerSideProps(context: NextPageContext) {
     }),
   ]);
 
+  // calling store functions
   const halnyConditions = getHalnyConditions(
     peak.current,
     valley.current,
     valleyHistorical.data[0]
   );
 
+  const halnyProbability = getHalnyProbability(halnyConditions);
+
   return {
     props: {
       halnyConditions,
+      halnyProbability,
       data: {
         valley,
         peak,
@@ -65,6 +80,7 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 
+// data fetching
 async function fetchWeather({
   lat,
   lon,
