@@ -1,4 +1,4 @@
-import { Weather } from "@/types/weather";
+import { Weather } from "@/src/types/weather";
 import { Button } from "./Button";
 
 export type Props = {
