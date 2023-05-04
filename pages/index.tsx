@@ -5,18 +5,18 @@ import Switches from "@/src/components/Switches";
 import { HistoricalWeather, Weather } from "@/src/types/weather";
 import { NextPageContext } from "next";
 import { getUnixTime, sub } from "date-fns";
+import { Photo, createClient } from "pexels";
 import {
   getHalnyConditions,
   getHalnyProbability,
   HalnyConditions,
   HalnyProbability,
 } from "@/src/store/store";
-export default function TestPage({
-  data,
+export default function Index({
+  photo,
   halnyConditions,
   halnyProbability,
 }: Props) {
-  console.log(data);
   return (
     <>
       <Navbar />
@@ -26,7 +26,7 @@ export default function TestPage({
           <Switches halnyConditions={halnyConditions} />
         </div>
         <div className="p-4">
-          <Description />
+          <Description photo={photo} />
         </div>
       </div>
     </>
@@ -37,18 +37,21 @@ export default function TestPage({
 type Props = {
   halnyConditions: HalnyConditions;
   halnyProbability: HalnyProbability;
+  photo: Photo;
   data: {
     valley: Weather;
     peak: Weather;
     valleyHistorical: HistoricalWeather;
-    lastFiveValley: Array<HistoricalWeather>;
-    lastFivePeak: Array<HistoricalWeather>;
   };
 };
 
 // fetching data
 export async function getServerSideProps(context: NextPageContext) {
-  const [valley, peak, valleyHistorical, ...rest] = await Promise.all([
+  const pexels = createClient(
+    "wy0v8raoQwmInGWdV7LXKqXZApGek4W9o9fuEvcxNoBVQ87a6sjpoICm"
+  );
+
+  const [valley, peak, valleyHistorical, photo] = await Promise.all([
     fetchWeather({ lat: 49.2992, lon: 19.9496 }),
     fetchWeather({ lat: 49.2322, lon: 19.9818 }),
     fetchHistoricalWeather({
@@ -56,6 +59,7 @@ export async function getServerSideProps(context: NextPageContext) {
       lon: 19.9496,
       time: getUnixTime(sub(new Date(), { hours: 1 })),
     }),
+    pexels.photos.show({ id: 1311445 }),
   ]);
 
   // calling store functions
@@ -71,6 +75,7 @@ export async function getServerSideProps(context: NextPageContext) {
     props: {
       halnyConditions,
       halnyProbability,
+      photo,
       data: {
         valley,
         peak,

@@ -1,6 +1,10 @@
-export default function Description() {
+import { Photo } from "pexels";
+import Image from "@/src/components/Image";
+
+export default function Description({ photo }: { photo: Photo }) {
   return (
     <div>
+      <Image src={photo.src.medium} alt={photo.alt!} />
       <p>
         Halny is a type of foehn wind that occurs in the Carpathian Mountains of
         Poland, Slovakia, and Ukraine. The word "halny" comes from the Polish
