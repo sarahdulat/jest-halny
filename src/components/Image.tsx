@@ -5,15 +5,14 @@ export type Props = {
 
 export default function OrtonEffectImage({ alt, src }: Props) {
   return (
-    <figure>
+    <figure className="relative opacity-[85]">
       <img
         src={src}
         alt={alt}
+        className="absolute mix-blend-lighten opacity-70"
         style={{
-          mixBlendMode: "lighten",
           filter: "blur(30px)",
-          opacity: "70%",
-          position: "absolute",
+          clipPath: "inset(0 0 0 0)",
         }}
       />
       <img src={src} alt={alt} />

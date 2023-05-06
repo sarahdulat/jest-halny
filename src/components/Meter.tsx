@@ -7,14 +7,12 @@ export type Props = {
 
 export default function Meter({ halnyProbability }: Props) {
   return (
-    <div className="p-4">
+    <div className="p-8 mb-8 rounded-lg bg-white drop-shadow-md">
       <div
         className={classes.gauge}
         style={{
           // @ts-expect-error
           "--rotation": `${halnyProbability * 180}deg`,
-          "--color": "#5cb85c",
-          "--background": "#e9ecef",
         }}
       >
         <div className={classes.percentage}></div>

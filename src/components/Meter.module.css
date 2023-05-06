@@ -1,34 +1,34 @@
 .gauge {
-  position: relative;
+  @apply relative;
   border-radius: 50%/100% 100% 0 0;
-  background-color: var(--color, #a22);
-  overflow: hidden;
+  @apply bg-gradient-to-r from-red-500 to-green-500;
+  @apply overflow-hidden;
 }
 .gauge:before {
   content: "";
-  display: block;
-  padding-top: 50%; /* ratio of 2:1*/
+  @apply block;
+  @apply pt-[50%] /* ratio of 2:1*/;
 }
 .gauge .chart {
-  overflow: hidden;
+  @apply overflow-hidden;
 }
 .gauge .mask {
-  position: absolute;
-  left: 20%;
-  right: 20%;
-  bottom: 0;
-  top: 40%;
-  background-color: #fff;
+  @apply absolute;
+  @apply left-[20%];
+  @apply right-[20%];
+  @apply top-[40%];
+  @apply bottom-0;
+  @apply bg-white;
   border-radius: 50%/100% 100% 0 0;
 }
 
 .gauge .percentage {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  bottom: 0;
-  right: -1px;
-  background-color: var(--background, #aaa);
+  @apply absolute;
+  @apply top-[-1px];
+  @apply left-[-1px];
+  @apply right-[-1px];
+  @apply bottom-0;
+  @apply bg-slate-200;
   transform: rotate(var(--rotation));
   transform-origin: bottom center;
   transition-duration: 600;
@@ -37,20 +37,20 @@
   --rotation: 100deg;
 }
 .gauge .value {
-  position: absolute;
-  bottom: 0%;
-  left: 0;
-  width: 100%;
-  text-align: center;
+  @apply absolute;
+  @apply bottom-[0%];
+  @apply left-0;
+  @apply w-full;
+  @apply text-center;
 }
 
 .gauge .min {
-  position: absolute;
-  bottom: 0;
-  left: 5%;
+  @apply absolute;
+  @apply bottom-0;
+  @apply left-[5%];
 }
 .gauge .max {
-  position: absolute;
-  bottom: 0;
-  right: 5%;
+  @apply absolute;
+  @apply bottom-0;
+  @apply right-[5%];
 }

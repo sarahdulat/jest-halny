@@ -1,7 +1,7 @@
 import Description from "@/src/components/Description";
 import Meter from "@/src/components/Meter";
 import Navbar from "@/src/components/Navbar";
-import Switches from "@/src/components/Switches";
+import Conditions from "@/src/components/Conditions";
 import { HistoricalWeather, Weather } from "@/src/types/weather";
 import { NextPageContext } from "next";
 import { getUnixTime, sub } from "date-fns";
@@ -14,22 +14,23 @@ import {
 } from "@/src/store/store";
 export default function Index({
   photo,
+  data,
   halnyConditions,
   halnyProbability,
 }: Props) {
   return (
-    <>
+    <div className="bg-[url('/images/pexels-miguel-á-padriñán-19670.jpg')] bg-no-repeat bg-cover bg-blend-multiply">
       <Navbar />
       <div className="grid grid-cols-2">
-        <div className="p-4">
+        <div className="p-16 pt-0">
           <Meter halnyProbability={halnyProbability} />
-          <Switches halnyConditions={halnyConditions} />
+          <Conditions data={data} halnyConditions={halnyConditions} />
         </div>
-        <div className="p-4">
+        <div className="p-16 pt-0 overflow-scroll h-[calc(100vh - 300px)]">
           <Description photo={photo} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
