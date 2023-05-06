@@ -22,11 +22,11 @@ export default function Index({
     <div className="bg-[url('/images/pexels-miguel-á-padriñán-19670.jpg')] bg-no-repeat bg-cover bg-blend-multiply">
       <Navbar />
       <div className="grid grid-cols-2">
-        <div className="p-16 pt-0">
+        <div className="p-16 pt-0 overflow-auto h-[calc(100vh_-_175px)]">
           <Meter halnyProbability={halnyProbability} />
           <Conditions data={data} halnyConditions={halnyConditions} />
         </div>
-        <div className="p-16 pt-0 overflow-scroll h-[calc(100vh - 300px)]">
+        <div className="p-16 pt-0 overflow-auto h-[calc(100vh_-_175px)]">
           <Description photo={photo} />
         </div>
       </div>
