@@ -13,7 +13,7 @@ export type Props = {
 
 export default function Conditions({ halnyConditions, data }: Props) {
   return (
-    <div className="flex flex-wrap justify-stretch">
+    <div className="flex flex-wrap justify-between gap-4">
       <Widget
         label="Wind Direction"
         info={<span>{data.peak.current.wind_deg}°</span>}

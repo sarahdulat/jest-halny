@@ -5,7 +5,7 @@ export type Props = {
 
 export default function OrtonEffectImage({ alt, src }: Props) {
   return (
-    <figure className="relative bg-black/5 blur-[2] border border-black/20 border-r-black/10 border-l-black/10 shadow-[0_20px_30px_rgba(0,0,0,0.1)]">
+    <figure className="relative">
       <img
         src={src}
         alt={alt}

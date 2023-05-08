@@ -1,6 +1,6 @@
 export default function Description() {
   return (
-    <div className="flex justify-between py-4 px-16 border border-t-0 border-l-0 border-r-0 border-[20px] border-lime-200">
+    <div className="flex justify-between py-4 px-16">
       <h1>JEST HALNY?</h1>
       <div>
         <select

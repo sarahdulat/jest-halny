@@ -18,12 +18,13 @@
 @layer base {
   body {
     font-family: "League Spartan", sans-serif;
-    @apply text-zinc-900;
+    @apply text-lime-950;
   }
   .container {
   }
   p {
     font-family: "Libre Baskerville", serif;
+    @apply text-stone-50;
     @apply pt-4;
   }
 }

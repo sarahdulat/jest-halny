@@ -3,7 +3,7 @@ import Image from "@/src/components/Image";
 
 export default function Description({ photo }: { photo: Photo }) {
   return (
-    <div className="">
+    <div className="pt-16">
       <Image src={photo.src.large} alt={photo.alt!} />
       <div className="pt-6">
         <p>

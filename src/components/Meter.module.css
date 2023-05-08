@@ -1,7 +1,7 @@
 .gauge {
   @apply relative;
   border-radius: 50%/100% 100% 0 0;
-  @apply bg-gradient-to-r from-red-500 to-green-500;
+  @apply bg-gradient-to-r from-stone-400 to-lime-500;
   @apply overflow-hidden;
 }
 .gauge:before {
@@ -14,9 +14,9 @@
 }
 .gauge .mask {
   @apply absolute;
-  @apply left-[20%];
-  @apply right-[20%];
-  @apply top-[40%];
+  @apply left-[25%];
+  @apply right-[25%];
+  @apply top-[50%];
   @apply bottom-0;
   @apply bg-white;
   border-radius: 50%/100% 100% 0 0;
@@ -28,7 +28,7 @@
   @apply left-[-1px];
   @apply right-[-1px];
   @apply bottom-0;
-  @apply bg-slate-200;
+  @apply bg-stone-200;
   transform: rotate(var(--rotation));
   transform-origin: bottom center;
   transition-duration: 600;

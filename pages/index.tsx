@@ -12,6 +12,7 @@ import {
   HalnyConditions,
   HalnyProbability,
 } from "@/src/store/store";
+import LanguagePicker from "@/src/components/LanguagePicker";
 export default function Index({
   photo,
   data,
@@ -19,16 +20,19 @@ export default function Index({
   halnyProbability,
 }: Props) {
   return (
-    <div className="bg-[url('/images/pexels-miguel-á-padriñán-19670.jpg')] bg-no-repeat bg-cover bg-blend-multiply">
-      <Navbar />
-      <div className="grid grid-cols-2">
-        <div className="p-16 pt-0 overflow-auto h-[calc(100vh_-_175px)]">
-          <Meter halnyProbability={halnyProbability} />
-          <Conditions data={data} halnyConditions={halnyConditions} />
+    <div className="grid grid-cols-5">
+      <div className="col-span-3 p-16 pt-0 overflow-auto h-screen bg-[url('/images/pexels-miguel-á-padriñán-19670.jpg')] bg-no-repeat bg-cover">
+        <div className="grid grid-cols-6">
+          <div className="col-start-2 col-span-4">
+            <h1>JEST HALNY?</h1>
+            <Meter halnyProbability={halnyProbability} />
+            <Conditions data={data} halnyConditions={halnyConditions} />
+          </div>
         </div>
-        <div className="p-16 pt-0 overflow-auto h-[calc(100vh_-_175px)]">
-          <Description photo={photo} />
-        </div>
+      </div>
+      <div className="col-span-2 p-16 pt-8 bg-lime-950 overflow-auto h-[calc(100%_-_208px)]">
+        <LanguagePicker />
+        <Description photo={photo} />
       </div>
     </div>
   );

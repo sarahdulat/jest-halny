@@ -9,12 +9,12 @@ export type Props = {
 
 export default function Widget({ label, active, info }: Props) {
   return (
-    <div className="p-4 bg-black/5 blur-[2] border border-black/20 border-r-black/10 border-l-black/10 shadow-[0_20px_30px_rgba(0,0,0,0.1)] w-[208px]">
+    <div className="p-4 rounded-md bg-black/5 blur-[2] border border-black/20 border-r-black/10 border-l-black/10 shadow-[0_20px_30px_rgba(0,0,0,0.1)] w-[208px]">
       <div className="flex items-center flex-col">
         <div
           className={clsx(
             "rounded-full h-14 w-14",
-            active ? "bg-green-500" : "bg-red-500"
+            active ? "bg-lime-500" : "bg-stone-400"
           )}
         ></div>
         <span className="whitespace-nowrap">{label}</span>
