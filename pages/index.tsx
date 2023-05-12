@@ -1,6 +1,6 @@
 import Description from "@/src/components/Description";
 import Meter from "@/src/components/Meter";
-import Navbar from "@/src/components/Navbar";
+// import Gauge from "@/src/components/Gauge";
 import Conditions from "@/src/components/Conditions";
 import { HistoricalWeather, Weather } from "@/src/types/weather";
 import { NextPageContext } from "next";
@@ -22,10 +22,11 @@ export default function Index({
   return (
     <div className="grid grid-cols-5">
       <div className="col-span-3 p-16 pt-0 overflow-auto h-screen bg-[url('/images/pexels-miguel-á-padriñán-19670.jpg')] bg-no-repeat bg-cover">
-        <div className="grid grid-cols-6">
-          <div className="col-start-2 col-span-4">
+        <div className="grid grid-cols-8">
+          <div className="col-start-2 col-span-6">
             <h1>JEST HALNY?</h1>
             <Meter halnyProbability={halnyProbability} />
+            {/* <Gauge halnyProbability={halnyProbability} /> */}
             <Conditions data={data} halnyConditions={halnyConditions} />
           </div>
         </div>
